@@ -9,18 +9,18 @@ const CARDS = {
     ],
     d2: [
         "Side Increaser",
-        x=>`Increase ${['your',"enemy's"][x]} maximum number of side by <b class='green'>2</b>`,
+        x=>`Increase ${['your',"enemy's"][x]} maximum number of side by <b class='green'>5</b>`,
         x=>true,
         x=>{
-            data[x].max_s += 2
+            data[x].max_s += 5
         },
     ],
     d3: [
         "Minimum Side Increaser",
-        x=>`Increase ${['your',"enemy's"][x]} minimum number of side by <b class='green'>1</b>`,
+        x=>`Increase ${['your',"enemy's"][x]} minimum number of side by <b class='green'>2</b>`,
         x=>data[x].min_s<data[x].max_s && data.round < 10,
         x=>{
-            data[x].min_s += 1
+            data[x].min_s += 2
         },
     ],
     d4: [
@@ -34,19 +34,19 @@ const CARDS = {
     ],
     d5: [
         "Side Re-Increaser",
-        x=>`Increase ${['your',"enemy's"][x]} maximum number of side by <b class='green'>4</b>`,
+        x=>`Increase ${['your',"enemy's"][x]} maximum number of side by <b class='green'>10</b>`,
         x=> data.round >= 10,
         x=>{
-            data[x].max_s += 4
+            data[x].max_s += 10
         },
     ],
     d6: [
         "Side Expansion",
-        x=>`Increase ${['your',"enemy's"][x]} minimum & maximum number of side by <b class='green'>2</b>`,
+        x=>`Increase ${['your',"enemy's"][x]} minimum & maximum number of side by <b class='green'>3</b>`,
         x=>true,
         x=>{
-            data[x].min_s += 2
-            data[x].max_s += 2
+            data[x].min_s += 3
+            data[x].max_s += 3
         },
     ],
     d7: [
@@ -77,18 +77,18 @@ const CARDS = {
 
     e1: [
         "Energy Increaser",
-        x=>`Increase ${['your',"enemy's"][x]} maximum energy by <b class='green'>3</b>`,
+        x=>`Increase ${['your',"enemy's"][x]} maximum energy by <b class='green'>10</b>`,
         x=>data[x].maxEnergy<25,
         x=>{
-            data[x].maxEnergy += 3
+            data[x].maxEnergy += 10
         },
     ],
     e2: [
         "Energy Increaser",
-        x=>`Increase ${['your',"enemy's"][x]} maximum energy by <b class='green'>5</b>`,
+        x=>`Increase ${['your',"enemy's"][x]} maximum energy by <b class='green'>20</b>`,
         x=>data[x].maxEnergy<25,
         x=>{
-            data[x].maxEnergy += 5
+            data[x].maxEnergy += 20
         },
     ],
     e3: [
@@ -99,10 +99,10 @@ const CARDS = {
     ],
     e4: [
         "Energy Increaser",
-        x=>`Increase ${['your',"enemy's"][x]} maximum energy by <b class='green'>1</b>`,
+        x=>`Increase ${['your',"enemy's"][x]} maximum energy by <b class='green'>5</b>`,
         x=>true,
         x=>{
-            data[x].maxEnergy += 1
+            data[x].maxEnergy += 5
         },
     ],
     
@@ -149,18 +149,18 @@ const CARDS = {
 
     m1: [
         "Multiplier Increaser",
-        x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>0.25</b>`,
+        x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>1</b>`,
         x=>true,
         x=>{
-            data[x].mult += 0.25
+            data[x].mult += 1
         },
     ],
     m2: [
         "Multiplier Expansion",
-        x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>0.75</b>`,
+        x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>2</b>`,
         x=>data.round >= 10,
         x=>{
-            data[x].mult += 0.75
+            data[x].mult += 2
         },
     ],
 
@@ -174,7 +174,7 @@ const CARDS = {
     ],
     o2: [
         "Normality",
-        x=>`Normal dice can attack <b class='green'>${['25%',"50%"][x]}</b> of ${['your',"enemy's"][x]} product to ${['an enemy',"you"][x]}`,
+        x=>`Normal dice can attack <b class='green'>${['50%',"100%"][x]}</b> of ${['your',"enemy's"][x]} product to ${['an enemy',"you"][x]}`,
         x=>!data[x].cards.includes("o2"),
         x=>{},
     ],
