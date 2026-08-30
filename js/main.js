@@ -82,7 +82,7 @@ function nextRound() {
     data.enemy.health = data.enemy.maxHealth
     data.e_grid = {}
 
-    if (data.player.cards.includes("curse2")) {
+    if (data.player.cards.includes("curse1")) {
         data.player.health = Math.floor(data.player.health*1.1)
         data.enemy.mult *= 1.01
     }
