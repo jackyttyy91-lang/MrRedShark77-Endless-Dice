@@ -2,7 +2,7 @@ const CARDS = {
     d1: [
         "Side Increaser",
         x=>`Increase ${['your',"enemy's"][x]} maximum number of side by <b class='green'>1</b>`,
-        x=>data.round < 10,
+        x=>true,
         x=>{
             data[x].max_s += 1
         },
@@ -59,7 +59,7 @@ const CARDS = {
     s1: [
         "Sacrifice for Multiplier",
         x=>`Sacrifice <b class='green'>80%</b> of your health for increasing the multiplier of product by <b class='green'>1</b>`,
-        x=>x=="player" && data.round < 20,
+        x=>x=="player",
         x=>{
             data[x].health = Math.ceil(data[x].health*0.2)
             data[x].mult += 1
@@ -78,7 +78,7 @@ const CARDS = {
     e1: [
         "Energy Increaser",
         x=>`Increase ${['your',"enemy's"][x]} maximum energy by <b class='green'>10</b>`,
-        x=>data[x].maxEnergy<25,
+        x=>true,
         x=>{
             data[x].maxEnergy += 10
         },
@@ -86,7 +86,7 @@ const CARDS = {
     e2: [
         "Energy Increaser",
         x=>`Increase ${['your',"enemy's"][x]} maximum energy by <b class='green'>20</b>`,
-        x=>data[x].maxEnergy<25,
+        x=>true,
         x=>{
             data[x].maxEnergy += 20
         },
@@ -115,27 +115,27 @@ const CARDS = {
         },
     ],
     en2: [
-        "Stronger Enemy",
-        x=>`Increase enemy's multiplier by <b class='green'>1</b>`,
-        x=>x=="enemy" && data.round < 10,
+        "Stronger Multiplier Increaser",
+        x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>1</b>`,
+        x=>true,
         x=>{
-            data.enemy.mult += 1
+            data[x].mult += 1
         },
     ],
     en3: [
-        "Mega Enemy",
-        x=>`Increase enemy's multiplier by <b class='green'>2</b>`,
-        x=>x=="enemy" && data.round >= 10,
+        "Mega Multiplier Increaser",
+        x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>2</b>`,
+        x=>true,
         x=>{
-            data.enemy.mult += 2
+            data[x].mult += 2
         },
     ],
     en4: [
         "Catastrophic",
-        x=>`Increase enemy's multiplier by <b class='green'>4</b>`,
+        x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>4</b>`,
         x=>x=="enemy" && data.round >= 20,
         x=>{
-            data.enemy.mult += 4
+            data[x].mult += 4
         },
     ],
     en5: [
@@ -149,18 +149,18 @@ const CARDS = {
 
     m1: [
         "Multiplier Increaser",
-        x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>1</b>`,
+        x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>0.25</b>`,
         x=>true,
         x=>{
-            data[x].mult += 1
+            data[x].mult += 0.25
         },
     ],
     m2: [
         "Multiplier Expansion",
-        x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>2</b>`,
+        x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>0.75</b>`,
         x=>data.round >= 10,
         x=>{
-            data[x].mult += 2
+            data[x].mult += 0.75
         },
     ],
 
@@ -181,13 +181,13 @@ const CARDS = {
 
     curse1: [
         "Cursed Multiplier",
-        x=>`Multiply your number of side by <b class='green'>2</b>, but divide your multiplier by <b class='red'>4</b>`,
+        x=>`Multiply your number of side by <b class='green'>2</b>, but divide enemy's multiplier by <b class='green'>4</b>`,
         x=>x=="player"&&Math.random()<1/5,
         x=>{
-            data[x].min_s *= 2
-            data[x].max_s *= 2
+            data.player.min_s *= 2
+            data.player.max_s *= 2
 
-            data[x].mult /= 4
+            data.enemy.mult /= 4
         },
     ],
     curse2: [
