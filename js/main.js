@@ -18,7 +18,7 @@ const newData = _=>{
             energy: 20,
             maxEnergy: 20,
 
-            mult: 1.5,
+            mult: 2,
             crit: 0.2,
 
             min_s: 1,
@@ -36,7 +36,7 @@ const newData = _=>{
             energy: 0,
             maxEnergy: 5,
 
-            mult: 0.5,
+            mult: 0.25,
             crit: 0,
 
             min_s: 1,
