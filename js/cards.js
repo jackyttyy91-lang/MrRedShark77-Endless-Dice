@@ -205,10 +205,10 @@ const CARDS = {
 
     c1: [
         "Critical Chance",
-        x=>`Increase ${['your',"enemy's"][x]} critical chance by <b class='green'>5%</b>`,
-        x=>data[x].crit<0.5,
+        x=>`Increase your critical chance by <b class='green'>10%</b>`,
+        x=>x=="player",
         x=>{
-            data[x].crit += 0.05
+            data[x].crit += 0.1
         },
     ],
 }
