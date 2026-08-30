@@ -93,7 +93,7 @@ const CARDS = {
     ],
     e3: [
         "Free Energy",
-        x=>`Consuming ${['your',"enemy's"][x]} energy has <b class='green'>20%</b> chance to get <b class='green'>2</b> free energy`,
+        x=>`Consuming ${['your',"enemy's"][x]} energy has <b class='green'>50%</b> chance to get <b class='green'>5</b> free energy`,
         x=>!data[x].cards.includes("e3"),
         x=>{},
     ],
@@ -116,24 +116,24 @@ const CARDS = {
     ],
     en2: [
         "Stronger Multiplier Increaser",
-        x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>1</b>`,
-        x=>true,
+        x=>`Increase your multiplier by <b class='green'>1</b>`,
+        x=>x=="player",
         x=>{
             data[x].mult += 1
         },
     ],
     en3: [
         "Mega Multiplier Increaser",
-        x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>2</b>`,
-        x=>true,
+        x=>`Increase your multiplier by <b class='green'>2</b>`,
+        x=>x=="player",
         x=>{
             data[x].mult += 2
         },
     ],
     en4: [
         "Catastrophic",
-        x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>4</b>`,
-        x=>true,
+        x=>`Increase your multiplier by <b class='green'>4</b>`,
+        x=>x=="player",
         x=>{
             data[x].mult += 4
         },
@@ -174,13 +174,13 @@ const CARDS = {
     ],
     o2: [
         "Normality",
-        x=>`Normal dice can attack <b class='green'>${['100%',"5%"][x]}</b> of ${['your',"enemy's"][x]} product to ${['an enemy',"you"][x]}`,
+        x=>`Normal dice can attack <b class='green'>${['100%',"1%"][x]}</b> of ${['your',"enemy's"][x]} product to ${['an enemy',"you"][x]}`,
         x=>!data[x].cards.includes("o2"),
         x=>{},
     ],
 
     o3: [
-        "Multi, Max Energy and Side Translation",
+        "Multi, Max Energy, Side Translation and Divide Enemy Starting Health",
         x=>`Multiply your multi, max energy and minimum & maximum number of side by 4, Divide enemy's multi, max energy, starting health and minimum & maximum number of side by 4`,
         x=>x=="player"&&Math.random()<1/5,
         x=>{
