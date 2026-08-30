@@ -211,7 +211,7 @@ function makeMove(move="player") {
     if ((d.pickStep > 1 || move == "enemy") && d.energy >= d.energyCos) {
         d.energy -= d.energyCos
 
-        if (d.cards.includes("e3") && Math.random() < .2) d.energy += 2
+        if (d.cards.includes("e3") && Math.random() < .5) d.energy += 5
 
         var dices = [g[d.pick[0]],g[d.pick[1]]]
         var p = Math.floor(d.product*d.mult)
