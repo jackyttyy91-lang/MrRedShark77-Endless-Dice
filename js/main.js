@@ -14,12 +14,12 @@ const newData = _=>{
             pickStep: 0,
             product: 1,
             energyCos: 0,
-            health: 100,
-            energy: 10,
-            maxEnergy: 10,
+            health: 200,
+            energy: 20,
+            maxEnergy: 20,
 
-            mult: 1,
-            crit: 0.15,
+            mult: 1.5,
+            crit: 0.2,
 
             min_s: 1,
             max_s: 6,
@@ -31,13 +31,13 @@ const newData = _=>{
             pick: [0,0],
             product: 1,
             energyCos: 0,
-            health: 50,
-            maxHealth: 50,
+            health: 10,
+            maxHealth: 10,
             energy: 0,
-            maxEnergy: 10,
+            maxEnergy: 5,
 
-            mult: 1,
-            crit: 0.15,
+            mult: 0.5,
+            crit: 0,
 
             min_s: 1,
             max_s: 6,
@@ -78,13 +78,13 @@ function shuffle(array) {
 function nextRound() {
     data.round++
     data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*(data.round>20?1.4:1.2))
-    data.enemy.mult += data.round>20?1:0.25
+    data.enemy.mult += data.round>20?1:0.1
     data.enemy.health = data.enemy.maxHealth
     data.e_grid = {}
 
     if (data.player.cards.includes("curse2")) {
         data.player.health = Math.floor(data.player.health*1.1)
-        data.enemy.mult *= 1.05
+        data.enemy.mult *= 1.01
     }
     
     resetTwo("player")
