@@ -181,25 +181,24 @@ const CARDS = {
 
     o3: [
         "Multi, Max Energy, Side Translation and Divide Enemy Starting Health",
-        x=>`Multiply your multi, max energy and minimum & maximum number of side by 4, Divide enemy's multi, max energy, starting health and minimum & maximum number of side by 4`,
+        x=>`Multiply your multi, max energy and minimum & maximum number of side by 10, Divide enemy's multi, starting health and minimum & maximum number of side by 10`,
         x=>x=="player",
         x=>{
-            data.player.min_s *= 4
-            data.player.max_s *= 4
-            data.player.mult *= 4
-            data.player.maxEnergy *= 4
+            data.player.min_s *= 10
+            data.player.max_s *= 10
+            data.player.mult *= 10
+            data.player.maxEnergy *= 10
 
-            data.enemy.mult /= 4
-            data.enemy.maxEnergy /= 4
-            data.enemy.min_s /= 4
-            data.enemy.max_s /= 4
-            data.enemy.maxHealth = Math.floor(data.enemy.maxHealth/4)
+            data.enemy.mult /= 10
+            data.enemy.min_s /= 10
+            data.enemy.max_s /= 10
+            data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*0.1)
         },
     ],
-    curse1: [
-        "Cursed Heart",
-        x=>`If you pass a round, will increase your health by <b class='green'>10%</b>, but increase enemy's multiplier by <b class='red'>1%</b> for passing it`,
-        x=>x=="player" && !data[x].cards.includes("curse2"),
+    o4: [
+        "Health Increaser",
+        x=>`Increase your health by <b class='green'>10%</b>`,
+        x=>x=="player",
         x=>{},
     ],
 
