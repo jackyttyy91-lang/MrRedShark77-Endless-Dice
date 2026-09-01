@@ -198,15 +198,15 @@ const CARDS = {
     ],
     curse1: [
         "Cursed Heart",
-        x=>`If you pass a round, will increase your health by <b class='green'>10%</b>, but increase enemy's multiplier by <b class='red'>5%</b> for passing it`,
-        x=>x=="player" && !data[x].cards.includes("curse2") && Math.random()<1/5,
+        x=>`If you pass a round, will increase your health by <b class='green'>10%</b>, but increase enemy's multiplier by <b class='red'>1%</b> for passing it`,
+        x=>x=="player" && !data[x].cards.includes("curse2"),
         x=>{},
     ],
 
     c1: [
         "Critical Chance",
         x=>`Increase your critical chance by <b class='green'>10%</b>`,
-        x=>x=="player",
+        x=>x=="player" && data.player.crit<1,
         x=>{
             data[x].crit += 0.1
         },
