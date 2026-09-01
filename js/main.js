@@ -18,11 +18,11 @@ const newData = _=>{
             energy: 500,
             maxEnergy: 500,
 
-            mult: 5,
+            mult: 10,
             crit: 0.5,
 
             min_s: 1,
-            max_s: 25,
+            max_s: 100,
 
             cards: [],
         },
@@ -34,7 +34,7 @@ const newData = _=>{
             health: 1,
             maxHealth: 1,
             energy: 0,
-            maxEnergy: 1,
+            maxEnergy: 10,
 
             mult: 0.25,
             crit: 0,
@@ -77,15 +77,10 @@ function shuffle(array) {
 
 function nextRound() {
     data.round++
-    data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*(data.round>20?1.4:1.2))
+    data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*1.01)
     data.enemy.mult += 0.01
     data.enemy.health = data.enemy.maxHealth
     data.e_grid = {}
-
-    if (data.player.cards.includes("curse1")) {
-        data.player.health = Math.floor(data.player.health*1.1)
-        data.enemy.mult *= 1.01
-    }
     
     resetTwo("player")
     resetTwo("enemy")
