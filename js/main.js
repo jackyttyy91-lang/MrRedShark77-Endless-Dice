@@ -78,7 +78,7 @@ function shuffle(array) {
 function nextRound() {
     data.round++
     data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*(data.round>20?1.4:1.2))
-    data.enemy.mult += data.round>20?1:0.1
+    data.enemy.mult += 0.01
     data.enemy.health = data.enemy.maxHealth
     data.e_grid = {}
 
@@ -503,7 +503,7 @@ function spawnRandomDice(id,update=false) {
 
     grid[pos] = {pos: pos, value: randomInt(d.min_s,d.max_s), type: ["normal","attack","heal"][tp], energy: [1,2,2][tp]}
 
-    if (d.cards.includes('d7') && Math.random() < .5) { // 
+    if (d.cards.includes('d7') && Math.random() < .25) { // 
         grid[pos].type = "scrambler"
         grid[pos].energy = 2
     }
