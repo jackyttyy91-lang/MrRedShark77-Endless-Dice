@@ -15,11 +15,11 @@ const newData = _=>{
             product: 1,
             energyCos: 0,
             health: 1000,
-            energy: 100,
-            maxEnergy: 100,
+            energy: 500,
+            maxEnergy: 500,
 
             mult: 2,
-            crit: 0.2,
+            crit: 0.5,
 
             min_s: 1,
             max_s: 9,
@@ -31,16 +31,16 @@ const newData = _=>{
             pick: [0,0],
             product: 1,
             energyCos: 0,
-            health: 10,
-            maxHealth: 10,
+            health: 1,
+            maxHealth: 1,
             energy: 0,
-            maxEnergy: 5,
+            maxEnergy: 1,
 
             mult: 0.25,
             crit: 0,
 
             min_s: 1,
-            max_s: 2,
+            max_s: 1,
 
             cards: [],
         },
