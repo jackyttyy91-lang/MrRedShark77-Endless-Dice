@@ -12,7 +12,7 @@ const CARDS = {
         x=>`Increase your maximum number of side by <b class='green'>10</b>`,
         x=>x=="player",
         x=>{
-            data[x].max_s += 10
+            data[x].max_s *= 2
         },
     ],
     d3: [
