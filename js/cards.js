@@ -9,7 +9,7 @@ const CARDS = {
     ],
     d2: [
         "Side Increaser",
-        x=>`Increase your maximum number of side by <b class='green'>10</b>`,
+        x=>`Increase your maximum number of side multiply by <b class='green'>2</b>`,
         x=>x=="player",
         x=>{
             data[x].max_s *= 2
@@ -17,10 +17,10 @@ const CARDS = {
     ],
     d3: [
         "Minimum Side Increaser",
-        x=>`Increase ${['your',"enemy's"][x]} minimum number of side by <b class='green'>2</b>`,
-        x=>data[x].min_s<data[x].max_s,
+        x=>`Increase your minimum number of side multiply by <b class='green'>2</b>`,
+        x=>x=="player" && data[x].min_s<data[x].max_s,
         x=>{
-            data[x].min_s += 5
+            data[x].min_s *= 2
         },
     ],
     d4: [
@@ -34,7 +34,7 @@ const CARDS = {
     ],
     d5: [
         "Side Re-Increaser",
-        x=>`Increase your multiply maximum number of side by <b class='green'>2</b>`,
+        x=>`Increase your multiply maximum number of side multiply by <b class='green'>2</b>`,
         x=>x=="player",
         x=>{
             data[x].max_s *= 2
@@ -42,7 +42,7 @@ const CARDS = {
     ],
     d6: [
         "Side Expansion",
-        x=>`Increase your multiply minimum & maximum number of side by <b class='green'>5</b>`,
+        x=>`Increase your multiply minimum & maximum number of side multiply by <b class='green'>2</b>`,
         x=>x=="player",
         x=>{
             data[x].min_s *= 2
@@ -51,8 +51,8 @@ const CARDS = {
     ],
     d7: [
         "Scrambler",
-        x=>`${['Your',"Enemy's"][x]} spawned Dice has 50% chance to transform into <b class='green'>Dice Scrambler</b>`,
-        x=>!data[x].cards.includes("d7"),
+        x=>`Your spawned Dice has 25% chance to transform into <b class='green'>Dice Scrambler</b>`,
+        x=>x=="player" && !data[x].cards.includes("d7"),
         x=>{},
     ],
 
@@ -77,7 +77,7 @@ const CARDS = {
 
     e1: [
         "Energy Increaser",
-        x=>`Increase your maximum energy by <b class='green'>10</b>`,
+        x=>`Increase your maximum energy multiply by <b class='green'>2</b>`,
         x=>x=="player",
         x=>{
             data[x].maxEnergy *= 2
@@ -85,7 +85,7 @@ const CARDS = {
     ],
     e2: [
         "Energy Increaser",
-        x=>`Increase your maximum energy by <b class='green'>20</b>`,
+        x=>`Increase your maximum energy multiply by <b class='green'>3</b>`,
         x=>x=="player",
         x=>{
             data[x].maxEnergy *= 3
@@ -93,13 +93,13 @@ const CARDS = {
     ],
     e3: [
         "Free Energy",
-        x=>`Consuming ${['your',"enemy's"][x]} energy has <b class='green'>50%</b> chance to get <b class='green'>5</b> free energy`,
-        x=>!data[x].cards.includes("e3"),
+        x=>`Consuming your energy has <b class='green'>50%</b> chance to get <b class='green'>5</b> free energy`,
+        x=>x=="player" && !data[x].cards.includes("e3"),
         x=>{},
     ],
     e4: [
         "Energy Increaser",
-        x=>`Increase ${['your',"enemy's"][x]} maximum energy by <b class='green'>5</b>`,
+        x=>`Increase ${['your',"enemy's"][x]} maximum energy by <b class='green'>1</b>`,
         x=>true,
         x=>{
             data[x].maxEnergy += 1
@@ -174,8 +174,8 @@ const CARDS = {
     ],
     o2: [
         "Normality",
-        x=>`Normal dice can attack <b class='green'>${['100%',"1%"][x]}</b> of ${['your',"enemy's"][x]} product to ${['an enemy',"you"][x]}`,
-        x=>!data[x].cards.includes("o2"),
+        x=>`Normal dice can attack <b class='green'>100%</b> of your product to an enemy`,
+        x=>x=="player" && !data[x].cards.includes("o2"),
         x=>{},
     ],
 
