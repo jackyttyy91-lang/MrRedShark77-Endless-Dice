@@ -20,7 +20,7 @@ const POPUP = {
     tutorial1: _=>`
     <h2>Tutorial</h2>
 
-    This game starts with 50 health, 10 energy!<br><br>
+    This game starts with 1 health, 1 energy!<br><br>
 
     <span style="font-size: 20px">
     1) Click a <b>"Roll"</b> button to spawn random Dice (cost with 1 Energy)<br>
