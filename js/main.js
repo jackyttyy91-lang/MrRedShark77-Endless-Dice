@@ -14,11 +14,11 @@ const newData = _=>{
             pickStep: 0,
             product: 1,
             energyCos: 0,
-            health: 1000,
+            health: 10000,
             energy: 500,
             maxEnergy: 500,
 
-            mult: 2,
+            mult: 5,
             crit: 0.5,
 
             min_s: 1,
