@@ -195,11 +195,22 @@ const CARDS = {
             data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*0.1)
         },
     ],
+
     o4: [
         "Health Increaser",
-        x=>`Increase your health by <b class='green'>10%</b>`,
+        x=>`Increase your health by <b class='green'>100%</b>`,
         x=>x=="player",
-        x=>{},
+        x=>{
+            data.player.health = Math.floor(data.player.health*2)
+        },
+    ],
+    o5: [
+        "Health Expansion",
+        x=>`Increase your health by <b class='green'>200%</b>`,
+        x=>x=="player",
+        x=>{
+            data.player.health = Math.floor(data.player.health*3)
+        },
     ],
 
     c1: [
