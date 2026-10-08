@@ -1,18 +1,20 @@
 const CARDS = {
     d1: [
         "Side Increaser",
-        x=>`Increase ${['your',"enemy's"][x]} maximum number of side by <b class='green'>1</b>`,
-        x=>true,
+        x=>`Increase your maximum number of side by <b class='green'>1</b> and Decrease enemy's maximum number of side by <b class='green'>1</b>`,
+        x=>x=="player",
         x=>{
-            data[x].max_s += 1
+            data.player.max_s += 1
+            data.enemy.max_s -= 1
         },
     ],
     d2: [
         "Side Increaser",
-        x=>`Increase your maximum number of side multiply by <b class='green'>2</b>`,
+        x=>`Multiply your maximum number of side  by <b class='green'>2</b>, Divide enemy's maximum number of side by <b class='green'>2</b>`,
         x=>x=="player",
         x=>{
-            data[x].max_s *= 2
+            data.player.max_s *= 2
+            data.enemy.max_s /= 2
         },
     ],
     d3: [
@@ -99,8 +101,8 @@ const CARDS = {
     ],
     e4: [
         "Energy Increaser",
-        x=>`Increase ${['your',"enemy's"][x]} maximum energy by <b class='green'>1</b>`,
-        x=>true,
+        x=>`Increase your maximum energy by <b class='green'>1</b>`,
+        x=>x=="player",
         x=>{
             data[x].maxEnergy += 1
         },
@@ -149,18 +151,19 @@ const CARDS = {
 
     m1: [
         "Multiplier Increaser",
-        x=>`Increase ${['your',"enemy's"][x]} multiplier by <b class='green'>0.25</b>`,
-        x=>true,
+        x=>`Increase your multiplier by <b class='green'>0.25</b>, Decrease enemy's multiplier by <b class='green'>0.25</b>`,
+        x=>x=="player",
         x=>{
-            data[x].mult += 0.25
+            data.player.mult += 0.25
+            data.enemy.mult -= 0.25
         },
     ],
     m2: [
         "Multiplier Expansion",
-        x=>`Increase your multiplier multiply by <b class='green'>1.75</b>`,
+        x=>`Increase your multiplier multiply by <b class='green'>2</b>`,
         x=>x=="player",
         x=>{
-            data[x].mult *= 1.75
+            data[x].mult *= 2
         },
     ],
 
