@@ -36,7 +36,7 @@ const newData = _=>{
             energy: 0,
             maxEnergy: 10,
 
-            mult: 0.1,
+            mult: 0.01,
             crit: 0,
 
             min_s: 1,
@@ -77,8 +77,6 @@ function shuffle(array) {
 
 function nextRound() {
     data.round++
-    data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*1.01)
-    data.enemy.mult += 0.01
     data.enemy.health = data.enemy.maxHealth
     data.e_grid = {}
     
@@ -206,7 +204,7 @@ function makeMove(move="player") {
     if ((d.pickStep > 1 || move == "enemy") && d.energy >= d.energyCos) {
         d.energy -= d.energyCos
 
-        if (d.cards.includes("e3") && Math.random() < .5) d.energy += 5
+        if (d.cards.includes("e3") && Math.random() < .5) d.energy += 10
 
         var dices = [g[d.pick[0]],g[d.pick[1]]]
         var p = Math.floor(d.product*d.mult)
