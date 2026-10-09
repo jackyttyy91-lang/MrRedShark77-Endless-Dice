@@ -87,15 +87,6 @@ function nextRound() {
 
     data.end = false
 
-    if (Math.random() < (data.round > 20 ? 0.3 : 0.2) && data.round > 10) {
-        pass()
-    }
-
-    if (data.round > 20) {
-        data.enemy.min_s += 1
-        data.enemy.max_s += randomInt(1,3)
-    }
-
     document.getElementById("conclusion").style.top = "-50%"
 
     document.getElementById("enemy_div").style.transform = "translateX(0%)"
