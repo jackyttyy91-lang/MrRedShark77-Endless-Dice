@@ -1,63 +1,34 @@
 const CARDS = {
     d1: [
         "Side Increaser",
-        x=>`Increase your maximum number of side by <b class='green'>1 to 3</b> and Decrease enemy's maximum number of side by <b class='green'>1 to 3</b>`,
-        x=>x=="player",
-        x=>{
-            data.player.max_s += randomInt(1,3)
-            data.enemy.max_s -= randomInt(1,3)
-        },
-    ],
-    d2: [
-        "Side Increaser",
         x=>`Multiply your maximum number of side by <b class='green'>2</b>, Divide enemy's maximum number of side by <b class='green'>2</b>`,
         x=>x=="player",
         x=>{
-            data.player.max_s *= 2
-            data.enemy.max_s /= 2
+            data.player.max_s *= randomInt(2,4)
+            data.enemy.max_s /= randomInt(2,4)
         },
     ],
-    d3: [
-        "Minimum Side Increaser",
-        x=>`Multiply your minimum number of side by <b class='green'>2</b>, Divide enemy's minimum number of side by <b class='green'>2</b>`,
-        x=>x=="player" && data[x].min_s<data[x].max_s,
-        x=>{
-            data.player.min_s *= 2
-            data.enemy.min_s /= 2
-        },
-    ],
-    d4: [
-        "Side Translation",
-        x=>`Increase your minimum & maximum number of side by <b class='green'>1 to 10</b>, Decrease enemy's minimum & maximum number of side by <b class='green'>1 to 10</b>`,
-        x=>x=="player",
-        x=>{
-            data.player.min_s += randomInt(1,10)
-            data.player.max_s += randomInt(1,10)
-            data.enemy.min_s -= randomInt(1,10)
-            data.enemy.max_s -= randomInt(1,10)
-        },
-    ],
-    d5: [
+    d2: [
         "Side Re-Increaser",
         x=>`Multiply your maximum number of side by <b class='green'>3</b>, Divide enemy's maximum number of side by <b class='green'>3</b>`,
         x=>x=="player",
         x=>{
-            data.player.max_s *= 3
-            data.enemy.max_s /= 3
+            data.player.max_s *= randomInt(3,16)
+            data.enemy.max_s /= randomInt(3,16)
         },
     ],
-    d6: [
+    d3: [
         "Side Expansion",
         x=>`Multiply your minimum & maximum number of side multiply by <b class='green'>2</b>, Divide enemy's minimum & maximum number of side by <b class='green'>2</b>`,
         x=>x=="player",
         x=>{
-            data.player.min_s *= 2
-            data.player.max_s *= 2
-            data.enemy.min_s /= 2
-            data.enemy.max_s /= 2
+            data.player.min_s *= randomInt(3,16)
+            data.player.max_s *= randomInt(3,16)
+            data.enemy.min_s /= randomInt(2,4)
+            data.enemy.max_s /= randomInt(2,4)
         },
     ],
-    d7: [
+    d4: [
         "Scrambler",
         x=>`Your spawned Dice has 25% chance to transform into <b class='green'>Dice Scrambler</b>`,
         x=>x=="player" && !data[x].cards.includes("d7"),
@@ -66,20 +37,20 @@ const CARDS = {
 
     s1: [
         "Enemy Sacrifice for Player Multiplier",
-        x=>`Sacrifice <b class='green'>80%</b> of enemy's starting health for your increasing the multiplier of multiply by <b class='green'>1.5</b>`,
+        x=>`Sacrifice <b class='green'>80%</b> of enemy's starting health for your increasing the multiplier of multiply by <b class='green'>2 to 4</b>`,
         x=>x=="player",
         x=>{
             data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*0.2)
-            data.player.mult *= 1.5
+            data.player.mult *= randomInt(2,4)
         },
     ],
     s2: [
         "Enemy Sacrifice for Player Multiplier Expansion",
-        x=>`Sacrifice <b class='green'>95%</b> of enemy's starting health for your increasing the multiplier of multiply by <b class='green'>2</b>`,
+        x=>`Sacrifice <b class='green'>95%</b> of enemy's starting health for your increasing the multiplier of multiply by <b class='green'>3 to 16</b>`,
         x=>x=="player",
         x=>{
             data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*0.05)
-            data.player.mult *= 2
+            data.player.mult *= randomInt(3,16)
         },
     ],
 
@@ -88,7 +59,7 @@ const CARDS = {
         x=>`Increase your maximum energy multiply by <b class='green'>2</b>`,
         x=>x=="player",
         x=>{
-            data[x].maxEnergy *= 2
+            data[x].maxEnergy *= randomInt(2,4)
         },
     ],
     e2: [
@@ -96,66 +67,34 @@ const CARDS = {
         x=>`Increase your maximum energy multiply by <b class='green'>3</b>`,
         x=>x=="player",
         x=>{
-            data[x].maxEnergy *= 3
+            data[x].maxEnergy *= randomInt(3,16)
         },
     ],
     e3: [
         "Free Energy",
-        x=>`Consuming your energy has <b class='green'>50%</b> chance to get <b class='green'>10</b> free energy`,
+        x=>`Consuming your energy has <b class='green'>99%</b> chance to get <b class='green'>100</b> free energy`,
         x=>x=="player" && !data[x].cards.includes("e3"),
         x=>{},
     ],
-    e4: [
-        "Energy Increaser",
-        x=>`Increase your maximum energy by <b class='green'>1</b>`,
+
+    en1: [
+        "Stronger Multiplier Increaser",
+        x=>`Increase your multiplier multiply by <b class='green'>2 to 4</b>`,
         x=>x=="player",
         x=>{
-            data[x].maxEnergy += 1
-        },
-    ],
-    
-    en1: [
-        "Enemy's Oktoberfest",
-        x=>`Increase enemy's starting health by <b class='green'>50%</b>`,
-        x=>x=="enemy",
-        x=>{
-            data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*1.5)
+            data[x].mult *= randomInt(2,4)
         },
     ],
     en2: [
-        "Stronger Multiplier Increaser",
-        x=>`Increase your multiplier multiply by <b class='green'>2</b>`,
+        "Mega Multiplier Increaser (Catastrophic)",
+        x=>`Increase your multiplier multiply by <b class='green'>3 to 16</b>`,
         x=>x=="player",
         x=>{
-            data[x].mult *= 2
-        },
-    ],
-    en3: [
-        "Mega Multiplier Increaser",
-        x=>`Increase your multiplier multiply by <b class='green'>4</b>`,
-        x=>x=="player",
-        x=>{
-            data[x].mult *= 4
-        },
-    ],
-    en4: [
-        "Catastrophic",
-        x=>`Increase your multiplier multiply by <b class='green'>8</b>`,
-        x=>x=="player",
-        x=>{
-            data[x].mult *= 8
-        },
-    ],
-    en5: [
-        "Giant Enemy",
-        x=>`Increase enemy's starting health by <b class='green'>100%</b>`,
-        x=>x=="enemy",
-        x=>{
-            data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*2)
+            data[x].mult *= randomInt(3,16)
         },
     ],
 
-    m1: [
+    m1: [   
         "Multiplier Increaser",
         x=>`Increase your multiplier by <b class='green'>0.25</b>, Decrease enemy's multiplier by <b class='green'>0.25</b>`,
         x=>x=="player",
@@ -173,45 +112,45 @@ const CARDS = {
             data.enemy.mult /= 2
         },
     ],
-
     o1: [
-        "Cleaner",
-        x=>`Clear all of your dices`,
-        x=>x=="player",
-        x=>{
-            data.p_grid = {}
-        },
-    ],
-    o2: [
         "Normality",
         x=>`Normal dice can attack <b class='green'>100%</b> of your product to an enemy`,
-        x=>x=="player" && !data[x].cards.includes("o2"),
+        x=>x=="player" && !data.player.cards.includes("o1"),
         x=>{},
     ],
 
-    o3: [
+    o2: [
         "Multi, Max Energy, Side Translation and Divide Enemy Starting Health",
-        x=>`Multiply your multi, max energy and minimum & maximum number of side by 10, Divide enemy's multi, starting health and minimum & maximum number of side by 10`,
+        x=>`Multiply your multi, max energy and minimum & maximum number of side by 10 to 100, Divide enemy's multi, starting health and minimum & maximum number of side by 10 to 100`,
         x=>x=="player",
         x=>{
-            data.player.min_s *= 10
-            data.player.max_s *= 10
-            data.player.mult *= 10
-            data.player.maxEnergy *= 10
+            data.player.min_s *= randomInt(10,100)
+            data.player.max_s *= randomInt(10,100)
+            data.player.mult *= randomInt(10,100)
+            data.player.maxEnergy *= randomInt(10,100)
 
-            data.enemy.mult /= 10
-            data.enemy.min_s /= 10
-            data.enemy.max_s /= 10
-            data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*0.1)
+            data.enemy.mult /= randomInt(10,100)
+            data.enemy.min_s /= randomInt(10,100)
+            data.enemy.max_s /= randomInt(10,100)
+            data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*(randomInt(0.1,0.01)))
         },
     ],
 
     c1: [
         "Critical Chance",
-        x=>`Increase your critical chance by <b class='green'>10%</b>`,
-        x=>x=="player" && data.player.crit<1,
+        x=>`Increase your critical chance by <b class='green'>50%</b>`,
+        x=>x=="player" && !data.player.cards.includes("c1"),
         x=>{
-            data[x].crit += 0.1
+            data[x].crit += 0.5
+        },
+    ],
+    
+    enm1: [
+        "Enemy Multipler",
+        x=>`Increase enemy's multiplier by <b class='green'>0.01</b>`,
+        x=>x=="enemy",
+        x=>{
+            data.enemy.mult += 0.01
         },
     ],
 }
