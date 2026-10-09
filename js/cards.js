@@ -1,16 +1,16 @@
 const CARDS = {
     d1: [
         "Side Increaser",
-        x=>`Increase your maximum number of side by <b class='green'>1</b> and Decrease enemy's maximum number of side by <b class='green'>1</b>`,
+        x=>`Increase your maximum number of side by <b class='green'>1 to 3</b> and Decrease enemy's maximum number of side by <b class='green'>1 to 3</b>`,
         x=>x=="player",
         x=>{
-            data.player.max_s += 1
-            data.enemy.max_s -= 1
+            data.player.max_s += randomInt(1,3)
+            data.enemy.max_s -= randomInt(1,3)
         },
     ],
     d2: [
         "Side Increaser",
-        x=>`Multiply your maximum number of side  by <b class='green'>2</b>, Divide enemy's maximum number of side by <b class='green'>2</b>`,
+        x=>`Multiply your maximum number of side by <b class='green'>2</b>, Divide enemy's maximum number of side by <b class='green'>2</b>`,
         x=>x=="player",
         x=>{
             data.player.max_s *= 2
@@ -19,36 +19,42 @@ const CARDS = {
     ],
     d3: [
         "Minimum Side Increaser",
-        x=>`Increase your minimum number of side multiply by <b class='green'>2</b>`,
+        x=>`Multiply your minimum number of side by <b class='green'>2</b>, Divide enemy's minimum number of side by <b class='green'>2</b>`,
         x=>x=="player" && data[x].min_s<data[x].max_s,
         x=>{
-            data[x].min_s *= 2
+            data.player.min_s *= 2
+            data.enemy.min_s /= 2
         },
     ],
     d4: [
         "Side Translation",
-        x=>`Increase your minimum & maximum number of side by <b class='green'>5</b>`,
+        x=>`Increase your minimum & maximum number of side by <b class='green'>1 to 10</b>, Decrease enemy's minimum & maximum number of side by <b class='green'>1 to 10</b>`,
         x=>x=="player",
         x=>{
-            data[x].min_s += 5
-            data[x].max_s += 5
+            data.player.min_s += randomInt(1,10)
+            data.player.max_s += randomInt(1,10)
+            data.enemy.min_s -= randomInt(1,10)
+            data.enemy.max_s -= randomInt(1,10)
         },
     ],
     d5: [
         "Side Re-Increaser",
-        x=>`Increase your multiply maximum number of side multiply by <b class='green'>2</b>`,
+        x=>`Multiply your maximum number of side by <b class='green'>3</b>, Divide enemy's maximum number of side by <b class='green'>3</b>`,
         x=>x=="player",
         x=>{
-            data[x].max_s *= 2
+            data.player.max_s *= 3
+            data.enemy.max_s /= 3
         },
     ],
     d6: [
         "Side Expansion",
-        x=>`Increase your multiply minimum & maximum number of side multiply by <b class='green'>2</b>`,
+        x=>`Multiply your minimum & maximum number of side multiply by <b class='green'>2</b>, Divide enemy's minimum & maximum number of side by <b class='green'>2</b>`,
         x=>x=="player",
         x=>{
-            data[x].min_s *= 2
-            data[x].max_s *= 2
+            data.player.min_s *= 2
+            data.player.max_s *= 2
+            data.enemy.min_s /= 2
+            data.enemy.max_s /= 2
         },
     ],
     d7: [
@@ -95,7 +101,7 @@ const CARDS = {
     ],
     e3: [
         "Free Energy",
-        x=>`Consuming your energy has <b class='green'>50%</b> chance to get <b class='green'>5</b> free energy`,
+        x=>`Consuming your energy has <b class='green'>50%</b> chance to get <b class='green'>10</b> free energy`,
         x=>x=="player" && !data[x].cards.includes("e3"),
         x=>{},
     ],
@@ -160,10 +166,11 @@ const CARDS = {
     ],
     m2: [
         "Multiplier Expansion",
-        x=>`Increase your multiplier multiply by <b class='green'>2</b>`,
+        x=>`Multiply your multiplier by <b class='green'>2</b>, Divde enemy's multiplier by <b class='green'>2</b>`,
         x=>x=="player",
         x=>{
-            data[x].mult *= 2
+            data.player.mult *= 2
+            data.enemy.mult /= 2
         },
     ],
 
@@ -196,23 +203,6 @@ const CARDS = {
             data.enemy.min_s /= 10
             data.enemy.max_s /= 10
             data.enemy.maxHealth = Math.floor(data.enemy.maxHealth*0.1)
-        },
-    ],
-
-    o4: [
-        "Health Increaser",
-        x=>`Increase your health by <b class='green'>100%</b>`,
-        x=>x=="player",
-        x=>{
-            data.player.health = Math.floor(data.player.health*2)
-        },
-    ],
-    o5: [
-        "Health Expansion",
-        x=>`Increase your health by <b class='green'>200%</b>`,
-        x=>x=="player",
-        x=>{
-            data.player.health = Math.floor(data.player.health*3)
         },
     ],
 
